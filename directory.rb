@@ -1,14 +1,14 @@
 #first we print the list of students
 students = [
-"Shan Hasan"
-"Ben"
-"Graham"
-"Stacy"
-"Monika"
-"Bob"
-"Jonty"
-"George"
-"Jack"
+{:name => "Shan Hasan", :cohort :november},
+{:name => "Ben", :cohort :november},
+{:name => "Graham",  :cohort:november},
+{:name => "Stacy", :cohort :november},
+{:name => "Monika", :cohort :november},
+{:name => "Bob", :cohort :november},
+{:name => "Jonty", :cohort :november},
+{:name => "George", :cohort :november},
+{:name => "Jack", :cohort :november},
 ]
 #Print the list of students
 def print_header
@@ -16,9 +16,10 @@ puts "The students of my cohort at Makers Academy"
 puts "_ _ _ _ _ _ _ _ _  _ _"
 end
 
-def print(names)
+def print(students)
 students.each do |student|
-	puts student
+	puts "#{student[:name]} (#{student[:cohort]} cohort)"
+end
 end
 
 #finally, we print the total
