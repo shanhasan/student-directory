@@ -9,4 +9,6 @@ puts "Bob"
 puts "Jonty"
 puts "George"
 puts "Jack
-"
+print "Overall, we have "
+print 9
+puts " great students"
