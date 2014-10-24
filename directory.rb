@@ -1,15 +1,3 @@
-#first we print the list of students
-students = [
-{:name => "Shan Hasan", :cohort :november},
-{:name => "Ben", :cohort :november},
-{:name => "Graham",  :cohort:november},
-{:name => "Stacy", :cohort :november},
-{:name => "Monika", :cohort :november},
-{:name => "Bob", :cohort :november},
-{:name => "Jonty", :cohort :november},
-{:name => "George", :cohort :november},
-{:name => "Jack", :cohort :november},
-]
 #Print the list of students
 def print_header
 puts "The students of my cohort at Makers Academy"
@@ -27,7 +15,29 @@ def print_footer(names)
 puts "Overall, we have {student.length} great students"
 end
 
+#Add students to list
+def input_students
+	puts "Please enter the names of the students"
+	puts "To finish, just hit return twice"
+	# create an empty array
+	students = []
+	#get the first name
+	name = gets.chomp
+	#While the name is not empty, repeat this code
+	while !name.empty? do
+		# add the student hash to the array
+		student << {:name => name, :cohort => :november}
+		puts "Now we have #{student.length} students"
+		# get another name from teh user
+		name =gets.chomp
+	end
+	#return the array of students
+	students
+end
+
+
 #nothing happens till we call the methods
+students = input_students
 print_header
 print(students)
 print_footer(students)
