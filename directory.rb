@@ -37,6 +37,7 @@ def print_menu
 	puts "1. Input the students"
 	puts "2. Show the students"
 	puts "3. Save the list to students.csv"
+	puts "4. Load the list from students.csv"
 	puts "9. Exit" # 9 because we'll be adding more items
 end
 
@@ -44,6 +45,31 @@ def show_students
 	print_header
 	print_students_list
 	print_footer
+end
+
+def save_students
+	# open the file for writing
+	file = File.open("stuents.csv", "w")
+	# iterate over the array of students
+	@students.each do |students|
+		students_data = [student[:name], student[:cohort]]
+		csv_line = student_data.join(",")
+		file.puts csv_line
+	end
+	file.close
+end
+
+def add_student(name, cohort)
+	@students << {:name => name, :cohort.to_sym}
+end
+
+def load_students
+	file = File.open("students.csv", "r")
+	file.readlines.each do |line|
+		name, cohort = line.chomp.split(',')
+		@students << {:name => name, :cohort => cohort.to_sym}
+	end
+	file.close
 end
 
 
@@ -69,14 +95,4 @@ def interacive_menu
 	end
 end
 
-def save_students
-	# open the file for writing
-	file = File.open("stuents.csv", "w")
-	# iterate over the array of students
-	@students.each do |students|
-		students_data = [student[:name], student[:cohort]]
-		csv_line = student_data.join(",")
-		file.puts csv_line
-	end
-	file.close
-end
+interacive_menu
