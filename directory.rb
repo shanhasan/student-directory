@@ -60,14 +60,14 @@ def save_students
 end
 
 def add_student(name, cohort)
-	@students << {:name => name, :cohort.to_sym}
+	@students << {:name => name, :cohort => cohort.to_sym}
 end
 
-def load_students
-	file = File.open("students.csv", "r")
+def load_students(filename = "students.csv")
+	file = File.open("filename", "r")
 	file.readlines.each do |line|
 		name, cohort = line.chomp.split(',')
-		@students << {:name => name, :cohort => cohort.to_sym}
+		add_student(name, cohort)
 	end
 	file.close
 end
@@ -79,7 +79,7 @@ def try_load_students
 		load_students(filename)
 		puts "Loaded #{@students.length} from#{filename}"
 	else
-		puts "sorry, #{filename} doesnt exist"
+		puts "sorry, #{filename} doesn't exist"
 		exit
 	end
 end
