@@ -72,6 +72,17 @@ def load_students
 	file.close
 end
 
+def try_load_students
+	filename = ARGV.first
+	return if filename.nil?
+	if File.exists?(filename)
+		load_students(filename)
+		puts "Loaded #{@students.length} from#{filename}"
+	else
+		puts "sorry, #{filename} doesnt exist"
+		exit
+	end
+end
 
 def process (selection)
 	case selection
@@ -81,6 +92,8 @@ def process (selection)
 		show_students
 	when "3"
 		save_students
+	when"4"
+		load_students
 	when "9"
 		exit
 	else
@@ -91,8 +104,9 @@ end
 def interacive_menu
 	loop do
 		print_menu
-		process(gets.chomp)
+		process(STDIN.gets.chomp)
 	end
 end
 
+try_load_students
 interacive_menu
